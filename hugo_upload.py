@@ -4,7 +4,7 @@
 # @ Author: tukechao
 # @ Date: 2022-07-20 21:21:49
 # @ LastEditors: tukechao
-# @ LastEditTime: 2022-07-21 00:28:54
+# @ LastEditTime: 2022-07-21 00:37:45
 # @ FilePath: \hugo_upload_script\hugo_upload.py
 # @ Description:hugo上传脚本，目标服务器是远程机，本脚本用来将指定目录内的文件遍历并上传到content目录
 
@@ -66,6 +66,7 @@ class HugoUpload():
         self.ssh.exec_command(f"mkdir '{r}'")
         time.sleep(1)
         self.sftp.put(os.path.join(file), k)
+        time.sleep(1)
 
     def handle_local_file(self):
         for dirpath, _, filenames in os.walk(LOCAL_CONTENT_PATH):
@@ -88,4 +89,6 @@ class HugoUpload():
 
 if __name__ == '__main__':
     ins = HugoUpload()
+    print("开始执行hugo发布")
     ins.handle_local_file()
+    print("发布完成")
