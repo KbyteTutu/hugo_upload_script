@@ -1,4 +1,4 @@
-config.py
+hugo_conf.py
 .vscode
 __pycache__
 blog_log
